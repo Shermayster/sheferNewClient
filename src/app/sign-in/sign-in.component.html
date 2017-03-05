@@ -1,0 +1,37 @@
+<div class="card-container card">
+  <div class="greetings">
+    <img src="assets/pics/logo-name.png" alt="מיו-מן">
+
+    <h2>
+      מערכת לניהול פעילויות להדרכת הורים בריפוי בעיסוק
+    </h2>
+    <p><strong>
+      מיועד למרפאים בעיסוק ומשמשת  ליצירת תוכנית פעילויות עבור הורים וילדיהם
+      להקניית מיומנויות ואורח חיים
+    </strong>
+    </p>
+  </div>
+  <div class="card-block">
+    <div class="sign-in-form">
+      <h4>כניסה למערכת</h4>
+      <form [formGroup]="signinForm" (submit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">שם משתמש</label>
+          <input formControlName="email"  class="form-control" #email id="email" type="email">
+        </div>
+        <div class="form-group">
+          <label for="password">סיסמה</label>
+          <input formControlName="password"  class="form-control" #email id="password" type="password">
+        </div>
+
+        <button [disabled]="!signinForm.valid" class="btn btn-primary" type="submit">כניסה למערכת</button>
+        <span *ngIf="showError"  class="errorMessage">אחד מהנתונים שגויים</span>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+

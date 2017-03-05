@@ -1,0 +1,97 @@
+<div class="parent-tabs">
+  <h1 class="card-title">צפייה בכרטיס משפחה</h1>
+  <ngb-tabset>
+    <ngb-tab title="פרטים אישיים">
+      <template ngbTabContent>
+        <div class="card">
+          <h3 class="card-title" *ngIf="!isNew">משפחת {{contact.lastName}}</h3>
+          <form *ngIf="patient" #patientForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="card-block">
+              <input type="checkbox" id="makeEditableCheckbox" *ngIf="!isNew" (click)="makeEditable()">
+              <label for="makeEditableCheckbox" *ngIf="!isNew" >עדכון פרטים</label>
+            </div>
+            <!-- <button class="btn btn-outline-info" type="button" (click)="makeEditable()" >עדכון פרטים</button>-->
+            <div class="card-block">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>שם משפחה</th>
+                  <th>שם הילד</th>
+                  <th>ת.ז.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <td><input type="text" [value]="contact.lastName"  (change)="contact.lastName = $event.target.value" required [disabled]="!editable"></td>
+                <td><input type="text" [value]="contact.childName" (change)="contact.childName = $event.target.value" required  [disabled]="!editable"></td>
+                <td><input  type="text" required [value]="patient.password"  (change)="patient.password = $event.target.value" [disabled]="!editable"></td>
+                </tbody>
+              </table>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>טלפון</th>
+                  <th>טלפון נוסף</th>
+                  <th>כתובת אימייל</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td><input type="tel" [value]="contact.tel" (change)="contact.tel = $event.target.value" required [disabled]="!editable"></td>
+                  <td><input type="tel" [value]="contact.tel2 || ''" [disabled]="!editable" (change)="contact.tel2 = $event.target.value" ></td>
+                  <td><input type="email" [value]="contact.email" required [disabled]="!editable" (change)="contact.email = $event.target.value"></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-block">
+              <!-- -->
+              <button class="btn btn-outline-primary" type="submit" *ngIf="!isNew" [disabled]="!patientForm.form.valid">שמירה</button>
+              <button class="btn btn-outline-primary" type="submit" *ngIf="isNew" [disabled]="!patientForm.form.valid">המשך</button>
+              <button (click)="onCancel()" type="reset" class="btn btn-secondary">ביטול</button>
+            </div>
+
+          </form>
+        </div>
+
+      </template>
+    </ngb-tab>
+    <ngb-tab title="שינוי תוכנית" *ngIf="!isNew">
+      <template ngbTabContent>
+        <div class="card">
+          <div class="card-block title-block">
+            <h4 class="card-title">מעקב פעילויות</h4>
+            <button (click)="changeProgram()" class="btn btn-primary">עדכון תוכנית</button>
+          </div>
+          <div class="card-block">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th>פעילויות</th>
+                <th>סוג הפעילויות</th>
+                <th>משוב</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let activity of activeProgram.patientActivityList" [ngClass]="{'table-danger': activity.activityRestponce === 'לא הצלחנו' || activity.activityRestponce === 'כמעט הצלחנו',
+          'table-success': activity.activityRestponce === 'הצלחנו'}">
+                <td>
+                  {{activity.activityName}}
+                </td>
+
+                <td>
+                  <span>{{activity.activityType}}</span>
+                </td>
+                <td>
+                  <span *ngIf="!activity.activityRestponce">טרם בוצע</span>
+                  <span *ngIf="activity.activityRestponce">{{activity.activityRestponce}}</span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>
+

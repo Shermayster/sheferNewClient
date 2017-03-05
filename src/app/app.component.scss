@@ -1,0 +1,145 @@
+/*
+library imports
+*/
+//components imports
+@import "./header/header.component";
+@import "./sign-in/sign-in.component";
+@import "./sign-up/sign-up.component";
+@import "./shared/styles/botstrap-fixes";
+@import "./shared/styles/variables";
+
+html, body {
+  direction: rtl;
+  font-size: 16px;
+  font-family: 'Rubik', sans-serif;
+  background-color: $lighter-color;
+}
+.amatica {
+  font-family: 'Amatica SC', cursive;
+}
+
+table, th, td {
+  text-align: center;
+  i {
+    cursor: pointer;
+  }
+}
+input[type="text"] {
+  direction:rtl
+}
+
+.navbar-nav .rtl-nav {
+  .nav-item li {
+    float: left !important;
+  }
+
+}
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+.greetings {
+  margin-top: 4rem;
+
+  img {
+    margin: 1rem auto;
+    display: block;
+  }
+}
+.center {
+  text-align: center;
+}
+.side-menu {
+  background-color: $dark-color;
+  height: 100vh;
+  li {
+    a {
+      color:$lighter-color;
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+.errorMessage {
+  color: $warning-color;
+  float: left;
+  margin-top: .5rem;
+
+}
+.activity-card {
+  text-align: center;
+  padding: 1rem 0;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 7rem;
+
+}
+
+.card-container {
+  width: 80rem;
+  margin: 1rem auto;
+}
+.parent-tabs {
+  width: 50rem;
+  margin: 1rem auto;
+  .tab-content{
+    .tab-pane {
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
+.table-cell-name {
+  max-width: 8rem;
+}
+.table-cell-description {
+  max-width: 25rem;
+}
+
+
+.control-table {
+  h1 {
+    display: inline-block;
+    margin-left: 4rem;
+    margin-bottom: 3rem;
+  }
+  button {
+    margin-top: -1rem;
+
+
+  }
+  .edit-btn {
+    font-size: .8rem;
+    padding: .25rem .5rem;
+    margin-top: 0rem;
+  }
+
+  .title-block {
+    .card-title {
+      display: inline-block;
+      margin-left: 1rem;
+    }
+    a {
+      color: #fff !important;
+      margin-top: -.5rem;
+    }
+  }
+
+
+}
+
+.table-overflow {
+  max-height: 40rem;
+  overflow: auto;
+}
+
+
+

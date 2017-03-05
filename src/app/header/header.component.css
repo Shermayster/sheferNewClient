@@ -1,0 +1,7 @@
+.navbar-nav .nav-item {
+  float: right; }
+
+.navbar-nav .nav-item + .nav-item {
+  margin-right: 1rem; }
+
+/*# sourceMappingURL=header.component.css.map */

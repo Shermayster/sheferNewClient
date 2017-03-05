@@ -1,0 +1,44 @@
+<div class="card-container card">
+  <div class="greetings">
+    <img src="assets/pics/logo-name.png" alt="מיו-מן">
+    <h2>
+      הרשמה למערכת
+ </h2>
+    <p><strong>
+
+
+      ברוכים הבאים למיו-מן!
+      <br>
+      כדי להצטרף למערכת, מלאו את הטופס הבא.
+
+    </strong>
+    </p>
+  </div>
+  <div class="card-block">
+  <div class="sign-up-form">
+    <h4>הרשמה למערכת</h4>
+    <form [formGroup]="signupForm" (submit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">שם משתמש</label>
+        <input formControlName="email"  class="form-control" #email id="email" type="email">
+      </div>
+      <div class="form-group">
+        <label for="password">סיסמה</label>
+        <input formControlName="password"  class="form-control" #email id="password" type="password">
+      </div>
+
+      <button [disabled]="!signupForm.valid" class="btn btn-primary" type="submit">הרשמה</button>
+    </form>
+    <div *ngIf="isSignUp" class="success-message alert alert-success">
+
+    <strong> נרשמת בהצלחה! </strong>
+      <br>
+      עכשיו ניתן
+      <a routerLink="/signin" class="alert-link">
+      להיכנס למערכת
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+

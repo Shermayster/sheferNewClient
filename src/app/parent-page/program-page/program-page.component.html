@@ -1,0 +1,101 @@
+<div class="container">
+<h1>עדכון תוכנית</h1>
+  <div class="row">
+    <div class="col-xs-8">
+      <ngb-tabset *ngIf="activitiesList">
+        <ngb-tab title="גילאי 2-3">
+          <template ngbTabContent>
+            <div class="card table-overflow">
+            <!--<activity-component [activity]="activity" (valueUpdated)="updateCart($event)"></activity-component>-->
+            <table class="table table-bordered table-hover table-sm table-rtl">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>שם הפעולה</th>
+                <th>פירוט</th>
+                <th>להוסיף לתוכנית</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let activity of activitiesAge3; let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td class="table-cell-name">{{activity.activityName}}</td>
+                <td class="table-cell-description"> {{activity.description}}</td>
+                <td class="center">
+                  <input  type="checkbox"  [(ngModel)]="activity.added" (click)="updateCart(activity, $event.target.checked)">
+                </td>
+              </tr>
+              </tbody>
+            </table>
+              </div>
+          </template>
+        </ngb-tab>
+        <ngb-tab title="גילאי 4">
+          <template ngbTabContent>
+            <div class="card table-overflow">
+              <!--<activity-component [activity]="activity" (valueUpdated)="updateCart($event)"></activity-component>-->
+              <table class="table table-bordered table-hover table-sm table-rtl">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>שם הפעולה</th>
+                  <th>פירוט</th>
+                  <th>להוסיף לתוכנית</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let activity of activitiesAge4; let i = index">
+                  <th scope="row">{{i+1}}</th>
+                  <td class="table-cell-name">{{activity.activityName}}</td>
+                  <td class="table-cell-description"> {{activity.description}}</td>
+                  <!--<td><input  type="number"   [(ngModel)]="activity.added"></td>-->
+                  <!--<td><input  type="number"   [(ngModel)]="activity.added"></td>-->
+                  <td class="center"><input  type="checkbox"  [(ngModel)]="activity.added" (click)="updateCart(activity, $event.target.checked)"></td>
+                  <!--<td><input  type="number" min="0" max="14" (change)="updateCart(activity, $event.target.value)"></td>-->
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </template>
+        </ngb-tab>
+        <ngb-tab title="גילאי 5+">
+          <template ngbTabContent>
+            <div class="card table-overflow">
+              <!--<activity-component [activity]="activity" (valueUpdated)="updateCart($event)"></activity-component>-->
+              <table class="table table-bordered table-hover table-sm table-rtl">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>שם הפעולה</th>
+                  <th>פירוט</th>
+                  <th>להוסיף לתוכנית</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let activity of activitiesAge5; let i = index">
+                  <th scope="row">{{i+1}}</th>
+                  <td class="table-cell-name">{{activity.activityName}}</td>
+                  <td class="table-cell-description"> {{activity.description}}</td>
+                  <td class="center"><input  type="checkbox"  [(ngModel)]="activity.added" (click)="updateCart(activity, $event.target.checked)"></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
+    <div class="col-xs-3">
+      <program-cart [activityProgram]="activityProgram"></program-cart>
+    </div>
+  </div>
+  <div>
+    <button type="button" class="btn btn-primary" *ngIf="!isNew" (click)="updateProgram()">עדכן תוכנית</button>
+    <button type="button" class="btn btn-primary" *ngIf="isNew" (click)="addFamily()">הוסף</button>
+    <button type="button" class="btn btn-secondary"  (click)="goBack()">ביטול</button>
+
+  </div>
+
+<h2 *ngIf="!activitiesList">בעיות ברשת</h2>
+
+</div>

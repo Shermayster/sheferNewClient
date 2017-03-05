@@ -1,0 +1,23 @@
+/*
+variables
+*/
+.activity-title {
+  font-size: 1rem;
+  font-weight: bold; }
+
+.activity-freq-title {
+  font-size: .6rem;
+  color: #BE3A71; }
+
+input[type='number'] {
+  height: 1.5rem; }
+
+i {
+  font-size: 1rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  color: #41b5c6; }
+
+/*# sourceMappingURL=activity.component.css.map */

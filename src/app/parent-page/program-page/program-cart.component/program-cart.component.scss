@@ -1,0 +1,22 @@
+@import "../../../shared/styles/variables";
+.cart-container{
+  background-color: $dark-color;
+  color: $lighter-color;
+  border-radius: 0.25rem;
+  margin-top: 2.6rem;
+  text-align: center;
+  .btn {
+    font-size: .5rem;
+  }
+}
+.list-group {
+  li {
+    background-color: transparent;
+  }
+}
+.cart-table {
+  th {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}

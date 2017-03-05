@@ -1,0 +1,115 @@
+<div class="control-table card card-block card-container">
+    <h1>לוח בקרה</h1>
+    <button type="button" class="btn btn-primary" (click)="addFamily()">הוספת משפחה</button>
+
+
+
+
+  <table class="table table-hover">
+  <thead>
+  <tr>
+    <th>משפחה</th>
+    <th>משובים</th>
+    <th>עדכון תוכנית</th>
+    <th>יצירת קשר</th>
+    <th>מחיקה</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let patient of data.patients">
+    <td scope="row"><span class="right">{{patient.contact.lastName}}</span> <button class="edit-btn btn btn-primary left" (click)="onParentSelect(patient)">הצג</button></td>
+    <td><i class="material-icons" (click)="openFeedback(response, patient)">insert_drive_file</i></td>
+    <td><i class="material-icons" (click)="changeProgram(patient)">settings_applications</i></td>
+    <td><i class="material-icons" (click)="openModal(content, patient)">contacts</i></td>
+    <td><i class="material-icons" (click)="deleteModalfun(deleteModal, patient)">delete</i></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<template #content ngbModalContainer let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">צירת קשר</h4>
+  </div>
+  <div class="modal-body">
+    <div><strong>אי מייל</strong>: {{currentContact.email}} </div>
+    <div><strong>טלפון</strong>:  {{currentContact.tel}}  </div>
+    <div><strong>טלפון נוסף</strong>:  {{currentContact.tel2}} </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">סגור</button>
+  </div>
+</template>
+
+<template #feedback ngbModalContainer let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">יצירת קשר</h4>
+  </div>
+  <div class="modal-body">
+    <div><strong>אי מייל</strong>: {{currentContact.email}} </div>
+    <div><strong>טלפון</strong>:  {{currentContact.tel}}  </div>
+    <div><strong>טלפון נוסף</strong>:  {{currentContact.tel2}} </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">סגור</button>
+  </div>
+</template>
+<template #deleteModal ngbModalContainer  let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">מחיקה</h4>
+  </div>
+  <div class="modal-body">
+   ברצונך למחוק את המטופל?
+    <div *ngIf="currentFamily">
+      <button type="button" (click)="deleteFamily(patient)" class="btn btn-outline-danger">כן</button>
+      <button type="button" (click)="c('Close click')" class="btn btn-outline-secondary">לא</button>
+    </div>
+    <div *ngIf="!currentFamily">
+      מחיקה בוצע בהצלחה
+    </div>
+  <div>
+
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">סגור</button>
+  </div>
+</template>
+
+<template #response ngbModalContainer let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">משובים</h4>
+  </div>
+  <div class="modal-body">
+    <span> <strong>
+      שבוע
+      {{currentFamily.program[0].currentWeek}}
+    מתוך
+      {{currentFamily.program[0].duration}}
+      </strong>
+    </span>
+   <div *ngFor="let activity of currentFamily.program[0].patientActivityList">
+     <span *ngIf="activity.activityRestponce"> {{activity.activityName}} תגובה: {{activity.activityRestponce}}</span>
+   </div>
+  <div *ngIf="dontResponse">
+לא בוצעו פעילויות
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">סגור</button>
+  </div>
+</template>

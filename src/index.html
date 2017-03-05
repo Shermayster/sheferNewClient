@@ -2,11 +2,18 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>NewSheferClient</title>
-  <base href="/">
+  <title>מיו-מן</title>
+  <script>
+    var path = document.location.href.includes('2016')
+      ? '/2016/May-men_HofitPavelOrit/client/'
+      : '/';
+    document.write('<base href="' + path + '"/>');
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Amatica+SC|Rubik:300,400,900&subset=hebrew" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <app-root>Loading...</app-root>

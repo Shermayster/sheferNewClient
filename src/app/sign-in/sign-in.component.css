@@ -1,0 +1,11 @@
+input {
+  direction: ltr; }
+
+.sign-in-form {
+  margin: 5rem auto;
+  width: 20rem; }
+
+.greetings h2, .greetings p {
+  text-align: center; }
+
+/*# sourceMappingURL=sign-in.component.css.map */

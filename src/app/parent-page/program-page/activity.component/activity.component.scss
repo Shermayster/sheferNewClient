@@ -1,0 +1,21 @@
+@import "../../../shared/styles/variables";
+.activity-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.activity-freq-title {
+  font-size: .6rem;
+  color: $danger-color;
+}
+input[type='number'] {
+  height: 1.5rem;
+}
+
+i {
+  font-size: 1rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  color: $secondary-color;
+}
