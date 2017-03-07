@@ -16,8 +16,8 @@ import {PatientBase, ParentContact} from "./patien.interface";
 
 export class HttpService {
 
- // private projectUrl= document.location.href.includes('2016') ?'../Server/api/' : 'http://localhost:53560/api/';
-  private projectUrl = 'http://shefer-001-site1.dtempurl.com/api/';
+  private projectUrl= document.location.href.includes('2016') ? '../Server/api/' : 'http://localhost:53560/api/';
+  // private projectUrl = 'http://projects.telem-hit.net/2016/Active-Me_HofitPavelOrit/Server/api/';
   private deleteFamilyApi = this.projectUrl + 'Patient/';
   private postProgramApi = this.projectUrl+'Program';
   private putProgramApi = this.projectUrl+'Program';
